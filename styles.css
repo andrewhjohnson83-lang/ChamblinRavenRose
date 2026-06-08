@@ -236,8 +236,10 @@ body {
 
 .hero-roles .dot {
   color: var(--rose-500);
-  margin: 0 6px;
+  margin: 0 4px;
   font-weight: 400;
+  letter-spacing: 0;
+  display: inline-block;
 }
 
 .hero-bio {
@@ -795,7 +797,8 @@ body {
   .section-head { margin-bottom: 40px; }
 
   .eyebrow { letter-spacing: 0.26em; margin: 0 0 22px; }
-  .hero-roles { letter-spacing: 0.28em; font-size: 12px; margin: 0 0 32px; }
+  .hero-roles { letter-spacing: 0.24em; font-size: 12px; margin: 0 0 32px; }
+  .hero-roles .dot { margin: 0; }
   .hero-bio { margin: 0 auto 36px; }
 
   .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
