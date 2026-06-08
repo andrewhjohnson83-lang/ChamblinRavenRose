@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRR Wordmark &mdash; Font Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500&family=Sacramento&family=Parisienne&family=Allura&family=Dancing+Script:wght@500;600&family=Great+Vibes&family=Italianno&family=Mrs+Saint+Delafield&family=Pinyon+Script&family=Tangerine:wght@400;700&family=Yellowtail&family=Petit+Formal+Script&family=Alex+Brush&family=Kaushan+Script&family=Berkshire+Swash&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --purple-950: #140822;
+      --purple-900: #1c0d2e;
+      --purple-800: #281540;
+      --purple-700: #3c1f55;
+      --rose-500: #c47a8b;
+      --rose-400: #d99ba9;
+      --rose-300: #e8c4ce;
+      --cream-100: #f2e8d4;
+      --cream-50: #faf2e1;
+      --line-dark: rgba(232, 196, 206, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 60px 32px 100px;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, var(--purple-900) 0%, var(--purple-950) 100%);
+      color: var(--cream-50);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header.page-head {
+      max-width: 920px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--rose-400);
+      margin: 0 0 18px;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(32px, 4vw, 44px);
+      line-height: 1.2;
+      margin: 0 0 16px;
+      color: var(--cream-50);
+    }
+
+    .intro {
+      color: rgba(232, 196, 206, 0.7);
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      max-width: 920px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      align-items: center;
+      gap: 24px;
+      padding: 26px 32px;
+      border: 1px solid var(--line-dark);
+      border-radius: 10px;
+      background: rgba(40, 21, 64, 0.45);
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .row:hover {
+      background: rgba(60, 31, 85, 0.5);
+      border-color: rgba(217, 155, 169, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .mark {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .compass {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 auto;
+      color: var(--cream-50);
+    }
+
+    .crr {
+      font-size: 38px;
+      line-height: 1;
+      color: var(--cream-50);
+      padding-top: 4px;
+      letter-spacing: 0.01em;
+    }
+
+    .meta {
+      text-align: right;
+    }
+
+    .font-name {
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--cream-100);
+      letter-spacing: 0.04em;
+      margin: 0 0 4px;
+    }
+
+    .font-note {
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      color: rgba(232, 196, 206, 0.55);
+      margin: 0;
+      font-style: italic;
+    }
+
+    /* Font assignments */
+    .f-sacramento     { font-family: "Sacramento", cursive; }
+    .f-parisienne     { font-family: "Parisienne", cursive; }
+    .f-allura         { font-family: "Allura", cursive; }
+    .f-dancing        { font-family: "Dancing Script", cursive; font-weight: 500; }
+    .f-greatvibes     { font-family: "Great Vibes", cursive; }
+    .f-italianno      { font-family: "Italianno", cursive; font-size: 52px; }
+    .f-mrssaint       { font-family: "Mrs Saint Delafield", cursive; font-size: 46px; }
+    .f-pinyon         { font-family: "Pinyon Script", cursive; font-size: 42px; }
+    .f-tangerine      { font-family: "Tangerine", cursive; font-weight: 700; font-size: 56px; }
+    .f-yellowtail     { font-family: "Yellowtail", cursive; font-size: 36px; }
+    .f-petitformal    { font-family: "Petit Formal Script", cursive; font-size: 32px; }
+    .f-alexbrush      { font-family: "Alex Brush", cursive; font-size: 46px; }
+    .f-kaushan        { font-family: "Kaushan Script", cursive; font-size: 32px; }
+    .f-berkshire      { font-family: "Berkshire Swash", cursive; font-size: 32px; }
+
+    @media (max-width: 720px) {
+      .row { grid-template-columns: 1fr; gap: 12px; padding: 22px 22px; }
+      .meta { text-align: left; }
+      .crr { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-head">
+    <p class="eyebrow">Font Comparison</p>
+    <h1>CRR &mdash; Header Wordmark Options</h1>
+    <p class="intro">
+      Each row shows the compass-rose mark alongside &ldquo;CRR&rdquo; in a different script font,
+      rendered against the same dark purple as the live header. Fonts are loosely ordered from
+      the most signature-clean to the most ornate.
+    </p>
+  </header>
+
+  <div class="grid">
+    <!-- 1. Sacramento (current) -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-sacramento">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">1. Sacramento</p>
+        <p class="font-note">Signature, clean &mdash; current</p>
+      </div>
+    </div>
+
+    <!-- 2. Parisienne -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-parisienne">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">2. Parisienne</p>
+        <p class="font-note">Flowing, gentle handwritten</p>
+      </div>
+    </div>
+
+    <!-- 3. Allura -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-allura">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">3. Allura</p>
+        <p class="font-note">Elegant, mid-weight script</p>
+      </div>
+    </div>
+
+    <!-- 4. Dancing Script -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-dancing">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">4. Dancing Script</p>
+        <p class="font-note">Modern, friendly, less formal</p>
+      </div>
+    </div>
+
+    <!-- 5. Yellowtail -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-yellowtail">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">5. Yellowtail</p>
+        <p class="font-note">Retro brush, more weight</p>
+      </div>
+    </div>
+
+    <!-- 6. Kaushan Script -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-kaushan">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">6. Kaushan Script</p>
+        <p class="font-note">Bold brush, slight slant</p>
+      </div>
+    </div>
+
+    <!-- 7. Berkshire Swash -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-berkshire">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">7. Berkshire Swash</p>
+        <p class="font-note">Vintage display, mixed serif/script</p>
+      </div>
+    </div>
+
+    <!-- 8. Petit Formal Script -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-petitformal">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">8. Petit Formal Script</p>
+        <p class="font-note">Compact, refined formal</p>
+      </div>
+    </div>
+
+    <!-- 9. Mrs Saint Delafield -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-mrssaint">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">9. Mrs Saint Delafield</p>
+        <p class="font-note">Vintage copperplate elegance</p>
+      </div>
+    </div>
+
+    <!-- 10. Alex Brush -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-alexbrush">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">10. Alex Brush</p>
+        <p class="font-note">Inked brush, painterly</p>
+      </div>
+    </div>
+
+    <!-- 11. Great Vibes -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-greatvibes">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">11. Great Vibes</p>
+        <p class="font-note">Flourished invitation style</p>
+      </div>
+    </div>
+
+    <!-- 12. Italianno -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-italianno">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">12. Italianno</p>
+        <p class="font-note">Thin, light, romantic</p>
+      </div>
+    </div>
+
+    <!-- 13. Pinyon Script -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-pinyon">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">13. Pinyon Script</p>
+        <p class="font-note">Formal calligraphy</p>
+      </div>
+    </div>
+
+    <!-- 14. Tangerine -->
+    <div class="row">
+      <div class="mark">
+        <svg class="compass" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.45"/>
+          <circle cx="50" cy="50" r="7.5" fill="none" stroke="currentColor" stroke-width="0.7"/>
+          <g fill="currentColor">
+            <path d="M50 4 L52.6 50 L50 50 Z"/><path d="M50 4 L47.4 50 L50 50 Z" opacity="0.55"/>
+            <path d="M50 96 L52.6 50 L50 50 Z" opacity="0.55"/><path d="M50 96 L47.4 50 L50 50 Z"/>
+            <path d="M96 50 L50 52.6 L50 50 Z"/><path d="M96 50 L50 47.4 L50 50 Z" opacity="0.55"/>
+            <path d="M4 50 L50 52.6 L50 50 Z" opacity="0.55"/><path d="M4 50 L50 47.4 L50 50 Z"/>
+          </g>
+          <g stroke="currentColor" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+            <line x1="22" y1="22" x2="33" y2="33"/><line x1="67" y1="33" x2="78" y2="22"/>
+            <line x1="78" y1="78" x2="67" y2="67"/><line x1="33" y1="67" x2="22" y2="78"/>
+          </g>
+          <circle cx="50" cy="50" r="1.6" fill="currentColor"/>
+        </svg>
+        <span class="crr f-tangerine">CRR</span>
+      </div>
+      <div class="meta">
+        <p class="font-name">14. Tangerine</p>
+        <p class="font-note">Delicate, swooping flourishes</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
