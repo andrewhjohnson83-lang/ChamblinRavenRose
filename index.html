@@ -143,7 +143,21 @@
             workshops, retreats, and gatherings.
           </p>
 
-          <form class="signup-form" id="signup-form" novalidate>
+          <form
+            class="signup-form"
+            id="signup-form"
+            name="stay-connected"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            novalidate
+          >
+            <!-- Netlify: identifies the form on AJAX submissions -->
+            <input type="hidden" name="form-name" value="stay-connected" />
+            <!-- Netlify: honeypot field for spam protection (hidden from humans) -->
+            <p class="visually-hidden" aria-hidden="true">
+              <label>Don&rsquo;t fill this out if you&rsquo;re human: <input name="bot-field" /></label>
+            </p>
             <label class="visually-hidden" for="email">Email address</label>
             <input
               type="email"
@@ -227,18 +241,45 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Simple placeholder behavior for the signup form
+    // Stay Connected — submits to Netlify Forms via AJAX, keeps the inline thank-you UX.
     document.getElementById('signup-form').addEventListener('submit', function (e) {
       e.preventDefault();
+      var form = e.target;
       var note = document.getElementById('signup-note');
       var input = document.getElementById('email');
-      if (input.value && input.checkValidity()) {
-        note.textContent = 'Thank you. You’ll hear from me along the way.';
-        note.classList.add('confirmed');
-        input.value = '';
-      } else {
+      var button = form.querySelector('button[type="submit"]');
+
+      if (!input.value || !input.checkValidity()) {
         note.textContent = 'Please enter a valid email address.';
+        note.classList.remove('confirmed');
+        return;
       }
+
+      note.textContent = 'Sending…';
+      note.classList.remove('confirmed');
+      if (button) button.disabled = true;
+
+      var formData = new FormData(form);
+      var encoded = new URLSearchParams(formData).toString();
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encoded
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error('Submission failed');
+          note.textContent = 'Thank you. You’ll hear from me along the way.';
+          note.classList.add('confirmed');
+          form.reset();
+        })
+        .catch(function () {
+          note.textContent = 'Something went wrong. Please try again, or email chamblinr@yahoo.com.';
+          note.classList.remove('confirmed');
+        })
+        .finally(function () {
+          if (button) button.disabled = false;
+        });
     });
 
     // Mobile nav toggle
